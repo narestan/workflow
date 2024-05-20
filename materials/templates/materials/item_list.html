@@ -1,0 +1,21 @@
+<!-- templates/materials/item_form.html -->
+{% extends 'base.html' %}
+
+{% block title %}Add Item{% endblock %}
+
+{% block header %}Add Item to {{ category.name }}{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <a href="{% url 'materials:item_create' category.id %}" class="bg-green-500 text-white py-2 px-4 rounded">Add New Item</a>
+</div>
+<ul class="list-disc pl-5">
+    {% if items %}
+        {% for item in items %}
+            <li class="mb-2">{{ item.item }}</li>
+        {% endfor %}
+    {% else %}
+        <li>No items in this category.</li>
+    {% endif %}
+</ul>
+{% endblock %}
